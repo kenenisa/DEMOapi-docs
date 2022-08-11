@@ -13,6 +13,7 @@ gets setting values
 `Nothing`
 **Response**
 *response type `json`*
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | serviceTypes | String | value for service types |
@@ -29,16 +30,21 @@ gets setting values
 verifies if email address is unique and valid
 
 **Request**
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | email | String | Email address to be verified |
+
 **Response**
 *response type `json`*
 *`On success`*
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | message | String | Returns a human readable success message |
+
 *`On error`*
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | error | String | Returns a human readable error message |
@@ -49,22 +55,28 @@ verifies if email address is unique and valid
 Generates and responds with an OTP code
 
 **Request**
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | username | Integer | Mobile number to generate the OTP for starting with `9` |
+
 **Response**
 *response type `json`*
 *`On success`*
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | otp | String | Returns the OTP code generated |
+
 *`On error`* Code `500`  is thrown
 
 ---
 ### Sign up
 `POST` */signup*
 Used to sign up users
+
 **Request** `ALL values are required`
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | social_unique_id | String | `Required` if login by facebook or google|
@@ -78,9 +90,12 @@ Used to sign up users
 | mobile | Integer | mobile number unique to user |
 | password | String | password min 6 char |
 | emergency_contact1 | String | emergency contact |
+
 **Response**
 *response type `json`*
+
 *`On success`*
+
 Responds with type `User`
 *`On error`* Code `500`  is thrown
 
@@ -90,15 +105,19 @@ Responds with type `User`
 Generates and responds with an OTP code over sms
 
 **Request**
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | username | Integer | Mobile number to generate the OTP for with full format |
+
 **Response**
 *response type `json`*
 *`On success`*
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | otp | String | Returns the OTP code generated |
+
 *`On error`* Code `500`  is thrown
 
 ---
@@ -106,6 +125,7 @@ Generates and responds with an OTP code over sms
 `POST` */login*
 Used to login users
 **Request** `ALL values are required`
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | device_type | String | type of the device. values are `android` or `ios`|
@@ -113,6 +133,7 @@ Used to login users
 | username | String | user name for login|
 | country_code | Integer | country code |
 | password | String | password min 6 char |
+
 **Response**
 *response type `json`*
 *`On success`*
@@ -125,11 +146,13 @@ Responds with type `Response`
 Verified otp sent over sms or voice
 
 **Request**
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | otp | Integer | OTP code send over either sms or voice |
 | username | Integer | Mobile number to generate the OTP for with full format |
 | device_token | String | Used to remember the device |
+
 **Response**
 *response type `json`*
 *`On success`*
@@ -149,9 +172,11 @@ Used to logout user
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | message | String | Returns a human readable success message |
+
 *`On error`*
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | error | String | Returns a human readable error message and throws code `500` |
+
 *`On error`* Code `500`  is thrown
 
