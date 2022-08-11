@@ -81,7 +81,7 @@ Generates and responds with an OTP code
 | ----------- | ----------- | ----------- |
 | otp | String | Returns the OTP code generated |
 
-*`On error`* Code `500`  is thrown
+*`On error`* Code ==500==  is thrown
 
 ---
 ### Sign up
@@ -102,7 +102,7 @@ Used to sign up users
 | first_name | String | first name max 255 char|
 | last_name | String | last name max 255 char|
 | email | String | email max 255 char and unique to user |
-| mobile | Integer | mobile number unique to user |
+| mobile | String | mobile number unique to user |
 | password | String | password min 6 char |
 | emergency_contact1 | String | emergency contact |
 
@@ -114,7 +114,7 @@ Used to sign up users
 
 Responds with type `User`
 
-*`On error`* Code `500`  is thrown
+*`On error`* Code ==500==  is thrown
 
 ---
 ### Send OTP
@@ -127,7 +127,7 @@ Generates and responds with an OTP code over sms
 
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
-| username | Integer | Mobile number to generate the OTP for with full format |
+| username | String | Mobile number to generate the OTP for with full format |
 
 **Response**
 
@@ -139,7 +139,7 @@ Generates and responds with an OTP code over sms
 | ----------- | ----------- | ----------- |
 | otp | String | Returns the OTP code generated |
 
-*`On error`* Code `500`  is thrown
+*`On error`* Code ==500==  is thrown
 
 ---
 ### Login
@@ -166,9 +166,10 @@ Used to login users
 
 Responds with type `Response`
 
-*`On error`* Code `500`  is thrown
+*`On error`* Code ==500==  is thrown
 
 ---
+
 ### Verify OTP
 
 `POST` */verify/otp*
@@ -180,7 +181,7 @@ Verified otp sent over sms or voice
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | otp | Integer | OTP code send over either sms or voice |
-| username | Integer | Mobile number to generate the OTP for with full format |
+| username | String | Mobile number to generate the OTP for with full format |
 | device_token | String | Used to remember the device |
 
 **Response**
@@ -191,9 +192,10 @@ Verified otp sent over sms or voice
 
 Responds with type `Response`
 
-*`On error`* Code `500`  is thrown
+*`On error`* Code ==500==  is thrown
 
 ---
+
 ### Logout
 
 `POST` */logout*
@@ -202,7 +204,13 @@ Used to logout user
 
 **Request**
 
-`Nothing`
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| device_type | String | type of the device. values are `android` or `ios`|
+| device_token | String | Used to remember the device |
+| device_id | String | device_id |
+| accessToken | String | Token from the other api|
+| login_by | String | login by `facebook` or `google` |
 
 **Response**
 
@@ -212,13 +220,16 @@ Used to logout user
 
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
-| message | String | Returns a human readable success message |
+| status | Boolean | Indicates the success status of the request |
+| token_type | String | Default value `Bearer` |
+| access_token | String | Api access token |
 
 *`On error`*
 
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
-| error | String | Returns a human readable error message and throws code `500` |
+| status | Boolean | Indicates the success status of the request |
+| message | String | Returns a human readable error message |
 
-*`On error`* Code `500`  is thrown
+
 
