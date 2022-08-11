@@ -6,12 +6,17 @@
 
 ---
 ### Settings
+
 `GET` */settings*
+
 gets setting values
 
 **Request**
+
 `Nothing`
+
 **Response**
+
 *response type `json`*
 
 | Field | Type | Description |
@@ -26,7 +31,9 @@ gets setting values
 
 ---
 ### Verify
+
 `POST` */verify*
+
 verifies if email address is unique and valid
 
 **Request**
@@ -36,7 +43,9 @@ verifies if email address is unique and valid
 | email | String | Email address to be verified |
 
 **Response**
+
 *response type `json`*
+
 *`On success`*
 
 | Field | Type | Description |
@@ -51,7 +60,9 @@ verifies if email address is unique and valid
 
 ---
 ### Voice sms
+
 `POST` */voice/sms*
+
 Generates and responds with an OTP code
 
 **Request**
@@ -61,7 +72,9 @@ Generates and responds with an OTP code
 | username | Integer | Mobile number to generate the OTP for starting with `9` |
 
 **Response**
+
 *response type `json`*
+
 *`On success`*
 
 | Field | Type | Description |
@@ -72,7 +85,9 @@ Generates and responds with an OTP code
 
 ---
 ### Sign up
+
 `POST` */signup*
+
 Used to sign up users
 
 **Request** `ALL values are required`
@@ -92,16 +107,20 @@ Used to sign up users
 | emergency_contact1 | String | emergency contact |
 
 **Response**
+
 *response type `json`*
 
 *`On success`*
 
 Responds with type `User`
+
 *`On error`* Code `500`  is thrown
 
 ---
 ### Send OTP
+
 `POST` */send/otp*
+
 Generates and responds with an OTP code over sms
 
 **Request**
@@ -111,7 +130,9 @@ Generates and responds with an OTP code over sms
 | username | Integer | Mobile number to generate the OTP for with full format |
 
 **Response**
+
 *response type `json`*
+
 *`On success`*
 
 | Field | Type | Description |
@@ -122,8 +143,11 @@ Generates and responds with an OTP code over sms
 
 ---
 ### Login
+
 `POST` */login*
+
 Used to login users
+
 **Request** `ALL values are required`
 
 | Field | Type | Description |
@@ -135,14 +159,20 @@ Used to login users
 | password | String | password min 6 char |
 
 **Response**
+
 *response type `json`*
+
 *`On success`*
+
 Responds with type `Response`
+
 *`On error`* Code `500`  is thrown
 
 ---
 ### Verify OTP
+
 `POST` */verify/otp*
+
 Verified otp sent over sms or voice
 
 **Request**
@@ -154,26 +184,38 @@ Verified otp sent over sms or voice
 | device_token | String | Used to remember the device |
 
 **Response**
+
 *response type `json`*
+
 *`On success`*
+
 Responds with type `Response`
+
 *`On error`* Code `500`  is thrown
 
 ---
 ### Logout
+
 `POST` */logout*
+
 Used to logout user
 
 **Request**
+
 `Nothing`
+
 **Response**
+
 *response type `json`*
+
 *`On success`*
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | message | String | Returns a human readable success message |
 
 *`On error`*
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | error | String | Returns a human readable error message and throws code `500` |
