@@ -1,7 +1,7 @@
 # API Docs
 
-> :warning: **THIS IS A DEMO**: Ony includes docs for auth and some types are not proved
-*all requests must be prefixed `/api`*
+> :warning: some types are not proved
+*all requests must be prefixed `/api/user`*
 
 ## Contents
 
@@ -51,9 +51,16 @@
     - [Promo codes](#promo-codes)
     - [Add promo code](#add-promo-code)
   - [Card](#card)
-    - [Insert Card](#insert-card)
+    - [Index Card](#index-card)
+    - [Store Card](#store-card)
+    - [Destroy Card](#destroy-card)
   - [Location](#location)
     - [Insert Location](#insert-location)
+    - [Index Card](#index-card-1)
+    - [Store Card](#store-card-1)
+    - [Show Card](#show-card)
+    - [Update Card](#update-card)
+    - [Destroy Card](#destroy-card-1)
   - [Passbook](#passbook)
     - [Wallet passbook](#wallet-passbook)
     - [Promo passbook](#promo-passbook)
@@ -62,6 +69,14 @@
     - [Package](#package)
   - [Types](#types)
     - [User](#user)
+    - [UserRequests](#userrequests)
+    - [ServiceList](#servicelist)
+    - [ServiceRentalHourPackage](#servicerentalhourpackage)
+    - [Providers](#providers)
+    - [Promocode](#promocode)
+    - [PromocodePassbook](#promocodepassbook)
+    - [WalletPassbook](#walletpassbook)
+    - [Message](#message)
     - [Error](#error)
 
 
@@ -82,8 +97,6 @@ gets setting values
 `Nothing`
 
 **Response**
-
-*response type `json`*
 
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
@@ -110,13 +123,9 @@ verifies if email address is unique and valid
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-| Field | Type | Description |
-| ----------- | ----------- | ----------- |
-| message | String | Returns a human readable success message |
+Returns type [Message](#message)
 
 *`On error`*
 
@@ -136,8 +145,6 @@ Generates and responds with an OTP code
 | username | Integer | Mobile number to generate the OTP for starting with `9` |
 
 **Response**
-
-*response type `json`*
 
 *`On success`*
 
@@ -172,8 +179,6 @@ Used to sign up users
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
 Responds with type [User](#user)
@@ -194,8 +199,6 @@ Generates and responds with an OTP code over sms
 | username | Integer | Mobile number to generate the OTP for with full format |
 
 **Response**
-
-*response type `json`*
 
 *`On success`*
 
@@ -224,8 +227,6 @@ Used to login users
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
 Responds with type `Response`
@@ -249,8 +250,6 @@ Verified otp sent over sms or voice
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
 Responds with type `Response`
@@ -273,13 +272,9 @@ generates and send an OTP Code for a mobile number of an existing user
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-| Field | Type | Description |
-| ----------- | ----------- | ----------- |
-| message | String | Returns a human readable success message |
+Returns type [Message](#message)
 
 *`On error`*
 
@@ -302,13 +297,9 @@ resets password for a user
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-| Field | Type | Description |
-| ----------- | ----------- | ----------- |
-| message | String | Returns a human readable success message |
+Returns type [Message](#message)
 
 *`On error`*
 
@@ -336,13 +327,9 @@ Used to logout user
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-| Field | Type | Description |
-| ----------- | ----------- | ----------- |
-| message | String | Returns a human readable success message |
+Returns type [Message](#message)
 
 *`On error`*
 
@@ -369,8 +356,6 @@ Used to login user using facebook login
 | login_by | String | login by `facebook`, `google` or `manual` |
 
 **Response**
-
-*response type `json`*
 
 *`On success`*
 
@@ -404,8 +389,6 @@ Used to login user using google login
 | login_by | String | login by `facebook`, `google` or `manual` |
 
 **Response**
-
-*response type `json`*
 
 *`On success`*
 
@@ -443,8 +426,6 @@ Change password for a logged in user
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
 | Field | Type | Description |
@@ -472,8 +453,6 @@ updates location value for a user
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
 | Field | Type | Description |
@@ -499,8 +478,6 @@ returns user data for the device
 | device_type | Float | type of the device. values are `android` or `ios` |
 
 **Response**
-
-*response type `json`*
 
 *`On success`*
 
@@ -530,8 +507,6 @@ updates user profile
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
 Returns type [User](#user)
@@ -553,12 +528,9 @@ returns service types with rental hor package
 `Nothing`
 
 **Response**
-
-*response type `json`*
-
 *`On success`*
 
-Returns type [ServiceList](#serviceList)
+Returns type [ServiceList](#serviceList) array
 
 *`On error`*
 
@@ -582,8 +554,6 @@ Checks to see if service is available at provided location
 
 
 **Response**
-
-*response type `json`*
 
 *`On success`*
 
@@ -616,13 +586,9 @@ Adds a user rating
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-| Field | Type | Description |
-| ----------- | ----------- | ----------- |
-| message | String | Returns a human readable success message |
+Returns type [Message](#message)
 
 *`On error`*
 
@@ -653,13 +619,9 @@ generate a new user request
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-| Field | Type | Description |
-| ----------- | ----------- | ----------- |
-| message | String | Returns a human readable success message |
+Returns type [Message](#message)
 | request_id | Integer | Unique identifier for the request |
 | current_provider | Integer | Unique identifier for the current provider |
 
@@ -683,13 +645,9 @@ cancels user request
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-| Field | Type | Description |
-| ----------- | ----------- | ----------- |
-| message | String | Returns a human readable success message |
+Returns type [Message](#message)
 
 *`On error`*
 
@@ -708,8 +666,6 @@ check user request
 `Nothing`
 
 **Response**
-
-*response type `json`*
 
 *`On success`*
 
@@ -743,8 +699,6 @@ Returns providers for a certain area and service
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
 Returns type [Providers](#providers)
@@ -772,13 +726,9 @@ Returns providers for a certain area and service
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-| Field | Type | Description |
-| ----------- | ----------- | ----------- |
-| message | String | Returns a human readable success message |
+Returns type [Message](#message)
 
 
 *`On error`*
@@ -801,11 +751,9 @@ Returns trip history using user requests
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-Returns type [UserRequests](#UserRequests)
+Returns type [UserRequests](#userrequests)
 
 *`On error`*
 
@@ -825,11 +773,9 @@ Returns upcoming trip histories using user requests
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-Returns type [UserRequests](#UserRequests)
+Returns type [UserRequests](#userrequests)
 
 *`On error`*
 
@@ -851,11 +797,9 @@ Returns trip details using user requests
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-Returns type [UserRequests](#UserRequests)
+Returns type [UserRequests](#userrequests)
 
 *`On error`*
 
@@ -877,11 +821,9 @@ Returns upcoming trip histories using user requests
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-Returns type [UserRequests](#UserRequests)
+Returns type [UserRequests](#userrequests)
 
 *`On error`*
 
@@ -905,13 +847,9 @@ Returns payment method for user request
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-| Field | Type | Description |
-| ----------- | ----------- | ----------- |
-| message | String | Returns a human readable success message |
+Returns type [Message](#message)
 
 *`On error`*
 
@@ -934,13 +872,9 @@ Returns payment method for user request
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-| Field | Type | Description |
-| ----------- | ----------- | ----------- |
-| message | String | Returns a human readable success message |
+Returns type [Message](#message)
 
 *`On error`*
 
@@ -970,8 +904,6 @@ Returns payment method for user request
 
 
 **Response**
-
-*response type `json`*
 
 *`On success`*
 
@@ -1018,8 +950,6 @@ Returns help details
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
 | Field | Type | Description |
@@ -1047,11 +977,9 @@ Returns active promo codes for current user
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-Returns type [Promocode](#Promocode)
+Returns type [Promocode](#promocode)
 
 *`On error`*
 
@@ -1073,13 +1001,9 @@ Adds promo code to the current user
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-| Field | Type | Description |
-| ----------- | ----------- | ----------- |
-| message | String | Returns a human readable success message |
+Returns type [Message](#message)
 
 *`On error`*
 
@@ -1089,13 +1013,204 @@ Returns type [Error](#error) with status code `500`
 
 ## Card
 
-### Insert Card
+### Index Card
+
+`GET` */card/index*
+
+Returns a list of cards for a user
+
+**Request**
+
+`Nothing`
+
+**Response**
+
+*`On success`*
+
+Returns type [Card](#card)
+
+*`On error`*
+
+Returns type [Error](#error) with status code `500`
+
+---
+
+### Store Card
+
+`POST` */card/store*
+
+Stores a card
+
+**Request**
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| stripe_token | String | required stripe token  |
+
+**Response**
+
+*`On success`*
+
+Returns type [Message](#message)
+
+*`On error`*
+
+Returns type [Error](#error) with status code `500`
+
+---
+
+### Destroy Card
+
+`POST` */card/destroy*
+
+Deletes a card
+
+**Request**
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| card_id | String | unique identifier for the card to be destroyed  |
+
+**Response**
+
+*`On success`*
+
+Returns type [Message](#message)
+
+*`On error`*
+
+Returns type [Error](#error) with status code `500`
 
 ---
 
 ## Location
 
 ### Insert Location
+
+### Index Card
+
+`GET` */location/index*
+
+Returns a list of location for a user
+
+**Request**
+
+`Nothing`
+
+**Response**
+
+*`On success`*
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| home | Location | - |
+| work | Location | - |
+| others | Location | - |
+| recent | Location | - |
+
+*`On error`*
+
+Returns with status code `500`
+
+---
+
+### Store Card
+
+`POST` */location/store*
+
+Stores a location
+
+**Request**
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| address | String | address for the location  |
+| latitude | Integer | latitude for the location  |
+| longitude | Integer | longitude for the location  |
+| type | Enum | possible values are `home`, `work`, `recent` and `others`  |
+
+**Response**
+
+*`On success`*
+
+Returns type [Message](#message)
+
+*`On error`*
+
+Returns type [Error](#error) with status code `500`
+
+---
+
+### Show Card
+
+`POST` */location/show/{id}*
+
+show specific location with id
+
+**Request**
+
+replace `{id}` in the route with the preferred id
+
+**Response**
+
+*`On success`*
+
+Returns type [Message](#message)
+
+*`On error`*
+
+Returns type [Error](#error) with status code `500`
+
+---
+
+### Update Card
+
+`POST` */location/update/{id}*
+
+replace `{id}` in the route with the preferred id
+
+**Request**
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| address | String | address for the location  |
+| latitude | Integer | latitude for the location  |
+| longitude | Integer | longitude for the location  |
+| type | Enum | possible values are `home`, `work`, `recent` and `others`  |
+
+**Response**
+
+*`On success`*
+
+Returns type [Message](#message)
+
+*`On error`*
+
+Returns type [Error](#error) with status code `500`
+
+---
+
+---
+
+### Destroy Card
+
+`POST` */card/destroy*
+
+replace `{id}` in the route with the preferred id
+
+**Request**
+
+`Nothing`
+
+**Response**
+
+*`On success`*
+
+Returns type [Message](#message)
+
+*`On error`*
+
+Returns type [Error](#error) with status code `500`
 
 ---
 
@@ -1113,11 +1228,9 @@ Gets the wallet passbook for the current user
 
 **Response**
 
-*response type `json`*
-
 *`On success`*
 
-Returns type [WalletPassbook](#WalletPassbook)
+Returns type [WalletPassbook](#walletpassbook)
 
 *`On error`*
 
@@ -1136,8 +1249,6 @@ Gets the promo passbook for the current user
 `Nothing`
 
 **Response**
-
-*response type `json`*
 
 *`On success`*
 
@@ -1165,51 +1276,37 @@ push notification or chat
 | message | String | message for the chat to push |
 
 **Response**
-
 `Nothing`
 
 ---
 
 ### Package
 
-`POST` */package*
+`GET` */package*
 
-returns packages
+gets a list of packages
 
 **Request**
 
 `Nothing`
 
 **Response**
-
 Returns type `PackageType`
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 ---
 ---
+---
+---
+---
+
 ## Types
 
 ### User
 
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
+| id | Integer | Unique identifier for a user |
 | social_unique_id | String | `Required` if login by facebook or google|
 | device_type | String | type of the device. values are `android` or `ios`|
 | device_token | String | Used to remember the device |
@@ -1218,9 +1315,148 @@ Returns type `PackageType`
 | first_name | String | first name max 255 char|
 | last_name | String | last name max 255 char|
 | email | String | email max 255 char and unique to user |
-| mobile | Integer | mobile number unique to user |
+| mobile | String | mobile number unique to user |
 | password | String | password min 6 char |
 | emergency_contact1 | String | emergency contact |
+
+---
+
+### UserRequests
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| id | Integer | Unique identifier for a request |
+| user_id | Integer | Unique identifier for a user issuing the request |
+| provider_id | Integer | Unique identifier for a provider. Default value is `0` |
+| current_provider_id | Integer | Unique identifier for a provider |
+| service_type_id | Integer | Unique identifier for the type of a service |
+| rental_hours | Integer \| null | value for rental hours |
+| out_leave | String \| null | value date time |
+| out_return | String \| null | value date time |
+| day | String \| null | value date time |
+| status | Enum | possible values are `SEARCHING`,`CANCELLED`,`ACCEPTED`,`STARTED`,`ARRIVED`,`PICKEDUP`,`DROPPED`,`COMPLETED` and `SCHEDULED` |
+| cancelled_by | Enum | possible values are `NONE`,`USER` and `PROVIDER` |
+| payment_mode | Enum | possible values are `CASH`,`CARD`,`PAYPAL` and `CC_AVENUE` |
+| service_required | Enum | possible values are `none`,`rental` and `outstation` |
+| paid | Boolean | Default value is `0` |
+| distance | Double | DOUBLE equivalent with precision, 15 digits in total and 8 after the decimal point |
+| s_address | String \| null | starting address |
+| s_latitude | String \| null | starting latitude |
+| s_longitude | String \| null | starting longitude |
+| d_address | String \| null | destination address |
+| otp | String | - |
+| d_latitude | String \| null | destination latitude |
+| d_longitude | String \| null | destination longitude |
+| assigned_at | TIMESTAMP  \| null | provider assigned time |
+| schedule_at | TIMESTAMP  \| null | service scheduled time |
+| started_at | TIMESTAMP  \| null | service starting time |
+| finished_at | TIMESTAMP  \| null | service finished time |
+| is_scheduled | Enum | possible values are `YES` and `YES` |
+| user_rated | Boolean | default value is `0` |
+| provider_rated | Boolean | default value is `0` |
+| use_wallet | Boolean | default value is `0` |
+| surge | Boolean | default value is `0` |
+| route_key | LongText | - |
+
+
+---
+
+### ServiceList
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| id | Integer | Unique identifier for a provider |
+| name | String | name max 255 char|
+| provider_name | String \| null | provider name max 255 char|
+| image | String \| null | - |
+| capacity | Integer | default value is `0` |
+| fixed | Integer | - |
+| price | Integer | price for the service |
+| minute | Integer | - |
+| outstation_km | Integer \| null | - |
+| rental_fare | Integer \| null | - |
+| outstation_driver | Integer \| null | - |
+| hour | String \| null | - |
+| distance | Integer | - |
+| calculator | Enum | possible values are `MIN`, `HOUR`, `DISTANCE`, `DISTANCEMIN` and `DISTANCEHOUR` |
+| description | String \| null | - |
+| status | Integer | default value is `0` |
+| rental_hour_package | - | has the type [ServiceRentalHourPackage](#servicerentalhourpackage) |
+
+---
+
+### ServiceRentalHourPackage
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| id | Integer | Unique identifier for a provider |
+| service_type_id | Integer | Unique identifier for the type of a service |
+| hour | String \| null | - |
+| km | String \| null | - |
+| price | Double | default value is `0` |
+
+---
+
+### Providers
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| id | Integer | Unique identifier for a provider |
+| first_name | String | first name max 255 char|
+| last_name | String | last name max 255 char|
+| email | String \| null | email max 255 char and unique to user |
+| mobile | String \| null | mobile number unique to user |
+| password | String | password min 6 char |
+| avatar | String \| null | - |
+| rating | Decimal | default value is `5` |
+| status | Enum | possible values are `onboarding`, `approved` and `banned` |
+| latitude | Double \| null | used for the location of the provider |
+| longitude | Double \| null | used for the location of the provider |
+| otp | Integer | used for confirmation. default value is `0` |
+
+---
+
+### Promocode
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| id | Integer | Unique identifier for a provider |
+| promo_code | String | the promo code |
+| discount | Float | amount of discount. default value is `0` |
+| discount_type | Enum | possible values are `percent` and `amount` |
+| status | Enum | possible values are `ADDED` and `EXPIRED` |
+| expiration | Datetime | time the promo code expires |
+
+---
+
+### PromocodePassbook
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| id | Integer | Unique identifier for a provider |
+| user_id | Integer | Unique identifier for a user |
+| promocode_id | Integer | Unique identifier for the promo code |
+| status | Enum | possible values are `ADDED`, `USED` and `EXPIRED` |
+
+---
+
+### WalletPassbook
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| id | Integer | Unique identifier for a provider |
+| user_id | Integer | Unique identifier for a user |
+| amount | Integer | amount in the passbook |
+| status | Enum | possible values are `CREDITED` and `DEBITED` |
+| via | String \| null | method for the passbook |
+
+---
+
+### Message
+
+| Field | Type | Description |
+| ----------- | ----------- | ----------- |
+| message | String | Returns a human readable success message |
 
 ---
 
