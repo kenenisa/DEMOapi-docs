@@ -1,73 +1,69 @@
-# API Docs
+#### API Docs
 
-> :warning: some types are not proved
-*all requests must be prefixed `/api/user`*
+**Contents**
 
-## Contents
-
-- [API Docs](#api-docs)
-  - [Contents](#contents)
-  - [Routes](#routes)
-    - [Settings](#settings)
-    - [Verify](#verify)
-    - [Voice sms](#voice-sms)
-    - [Sign up](#sign-up)
-    - [Send OTP](#send-otp)
-    - [Login](#login)
-    - [Verify OTP](#verify-otp)
-    - [Forgot password](#forgot-password)
-    - [Reset password](#reset-password)
-    - [Polygon](#polygon)
-    - [Logout](#logout)
-  - [Auth](#auth)
-    - [Facebook](#facebook)
-    - [Google](#google)
-  - [User profile](#user-profile)
-    - [Change password](#change-password)
-    - [Update location](#update-location)
-    - [Details](#details)
-    - [Update profile](#update-profile)
-  - [Services](#services)
-    - [Services](#services-1)
-    - [Service geo fencing](#service-geo-fencing)
-    - [Rate provider](#rate-provider)
-  - [Request](#request)
-    - [Send request](#send-request)
-    - [Cancel request](#cancel-request)
-    - [Check request](#check-request)
-    - [Show providers](#show-providers)
-    - [Update request](#update-request)
-  - [History](#history)
-    - [Trips](#trips)
-    - [Upcoming trips](#upcoming-trips)
-    - [Trip details](#trip-details)
-    - [Upcoming trip details](#upcoming-trip-details)
-  - [Payment](#payment)
-    - [Payment](#payment-1)
-    - [Add money](#add-money)
-    - [Estimated fee](#estimated-fee)
-    - [Help](#help)
-  - [Promo code](#promo-code)
-    - [Promo codes](#promo-codes)
-    - [Add promo code](#add-promo-code)
-  - [Card](#card)
-    - [Index Card](#index-card)
-    - [Store Card](#store-card)
-    - [Destroy Card](#destroy-card)
-  - [Location](#location)
-    - [Insert Location](#insert-location)
-    - [Index Card](#index-card-1)
-    - [Store Card](#store-card-1)
-    - [Show Card](#show-card)
-    - [Update Card](#update-card)
-    - [Destroy Card](#destroy-card-1)
-  - [Passbook](#passbook)
-    - [Wallet passbook](#wallet-passbook)
-    - [Promo passbook](#promo-passbook)
-  - [Others](#others)
-    - [Chat push](#chat-push)
-    - [Package](#package)
-  - [Types](#types)
+- [Routes](#routes)
+  - [User routes](#user-routes)
+    - [Access](#access)
+      - [Settings](#settings)
+      - [Verify](#verify)
+      - [Voice sms](#voice-sms)
+      - [Sign up](#sign-up)
+      - [Send OTP](#send-otp)
+      - [Login](#login)
+      - [Verify OTP](#verify-otp)
+      - [Forgot password](#forgot-password)
+      - [Reset password](#reset-password)
+      - [Polygon](#polygon)
+      - [Logout](#logout)
+    - [Auth](#auth)
+      - [Facebook](#facebook)
+      - [Google](#google)
+    - [User profile](#user-profile)
+      - [Change password](#change-password)
+      - [Update location](#update-location)
+      - [Details](#details)
+      - [Update profile](#update-profile)
+    - [Services](#services)
+      - [Services](#services-1)
+      - [Service geo fencing](#service-geo-fencing)
+      - [Rate provider](#rate-provider)
+    - [Request](#request)
+      - [Send request](#send-request)
+      - [Cancel request](#cancel-request)
+      - [Check request](#check-request)
+      - [Show providers](#show-providers)
+      - [Update request](#update-request)
+    - [History](#history)
+      - [Trips](#trips)
+      - [Upcoming trips](#upcoming-trips)
+      - [Trip details](#trip-details)
+      - [Upcoming trip details](#upcoming-trip-details)
+    - [Payment](#payment)
+      - [Payment](#payment-1)
+      - [Add money](#add-money)
+      - [Estimated fee](#estimated-fee)
+      - [Help](#help)
+    - [Promo code](#promo-code)
+      - [Promo codes](#promo-codes)
+      - [Add promo code](#add-promo-code)
+    - [Card](#card)
+      - [Index Card](#index-card)
+      - [Store Card](#store-card)
+      - [Destroy Card](#destroy-card)
+    - [Location](#location)
+      - [Index location](#index-location)
+      - [Store location](#store-location)
+      - [Show location](#show-location)
+      - [Update location](#update-location-1)
+      - [Destroy location](#destroy-location)
+    - [Passbook](#passbook)
+      - [Wallet passbook](#wallet-passbook)
+      - [Promo passbook](#promo-passbook)
+    - [Others](#others)
+      - [Chat push](#chat-push)
+      - [Package](#package)
+- [Types](#types)
     - [User](#user)
     - [UserRequests](#userrequests)
     - [ServiceList](#servicelist)
@@ -84,9 +80,15 @@
 
 
 ---
-## Routes
+# Routes
 
-### Settings
+## User routes
+
+> **All requests to user api must be prefixed `/api/user`**
+
+### Access
+
+#### Settings
 
 `GET` */settings*
 
@@ -109,7 +111,8 @@ gets setting values
 | stripe_currency | String | currency for payment |
 
 ---
-### Verify
+
+#### Verify
 
 `POST` */verify*
 
@@ -132,7 +135,8 @@ Returns type [Message](#message)
 Returns type [Error](#error)
 
 ---
-### Voice sms
+
+#### Voice sms
 
 `POST` */voice/sms*
 
@@ -155,7 +159,8 @@ Generates and responds with an OTP code
 *`On error`* Code `500`  is thrown
 
 ---
-### Sign up
+
+#### Sign up
 
 `POST` */signup*
 
@@ -186,7 +191,8 @@ Responds with type [User](#user)
 *`On error`* Code `500`  is thrown
 
 ---
-### Send OTP
+
+#### Send OTP
 
 `POST` */send/otp*
 
@@ -209,7 +215,8 @@ Generates and responds with an OTP code over sms
 *`On error`* Code `500`  is thrown
 
 ---
-### Login
+
+#### Login
 
 `POST` */login*
 
@@ -234,7 +241,8 @@ Responds with type `Response`
 *`On error`* Code `500`  is thrown
 
 ---
-### Verify OTP
+
+#### Verify OTP
 
 `POST` */verify/otp*
 
@@ -258,7 +266,7 @@ Responds with type `Response`
 
 ---
 
-### Forgot password
+#### Forgot password
 
 `POST` */forgot/password*
 
@@ -282,7 +290,7 @@ Returns type [Error](#error)
 
 ---
 
-### Reset password
+#### Reset password
 
 `POST` */reset/password*
 
@@ -307,7 +315,7 @@ Returns type [Error](#error)
 
 ---
 
-### Polygon
+#### Polygon
 
 `GET` */polygon*
 
@@ -315,7 +323,7 @@ Returns type [Error](#error)
 
 ---
 
-### Logout
+#### Logout
 
 `POST` */logout*
 
@@ -337,9 +345,9 @@ Returns type [Error](#error) with code `500`
 
 ---
 
-## Auth
+### Auth
 
-### Facebook
+#### Facebook
 
 `POST` */auth/facebook*
 
@@ -372,7 +380,7 @@ Used to login user using facebook login
 | status | Boolean | Indicates the success status of the request |
 | message | String | Returns a human readable error message |
 
-### Google
+#### Google
 
 `POST` */auth/google*
 
@@ -409,9 +417,9 @@ Used to login user using google login
 
 > :warning: **The following routes are middleware protected and require *`api_token`* to be specified (eg. `/?api_token=[token]`)**
 
-## User profile
+### User profile
 
-### Change password
+#### Change password
 
 `POST` */change/password*
 
@@ -438,7 +446,7 @@ Returns type [Error](#error)
 
 ---
 
-### Update location
+#### Update location
 
 `POST` */update/location*
 
@@ -465,7 +473,7 @@ Returns type [Error](#error)
 
 ---
 
-### Details
+#### Details
 
 `GET` */details*
 
@@ -489,7 +497,7 @@ Returns type [Error](#error)
 
 ---
 
-### Update profile
+#### Update profile
 
 `POST` */update/profile*
 
@@ -515,9 +523,9 @@ Returns type [User](#user)
 
 Returns type [Error](#error)
 
-## Services
-
 ### Services
+
+#### Services
 
 `GET` */services*
 
@@ -538,7 +546,7 @@ Returns type [Error](#error)
 
 ---
 
-### Service geo fencing
+#### Service geo fencing
 
 `GET` */services/geo_fencing*
 
@@ -569,7 +577,7 @@ Returns type [Error](#error)
 
 ---
 
-### Rate provider
+#### Rate provider
 
 `POST` */rate/provider*
 
@@ -596,9 +604,9 @@ Returns type [Error](#error)
 
 ---
 
-## Request
+### Request
 
-### Send request
+#### Send request
 
 `POST` */send/request*
 
@@ -631,7 +639,7 @@ Returns type [Error](#error)
 
 ---
 
-### Cancel request
+#### Cancel request
 
 `POST` */cancel/request*
 
@@ -655,7 +663,7 @@ Returns type [Error](#error)
 
 ---
 
-### Check request
+#### Check request
 
 `GET` */request/check*
 
@@ -683,7 +691,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Show providers
+#### Show providers
 
 `GET` */show/providers*
 
@@ -709,7 +717,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Update request
+#### Update request
 
 `POST` */update/request*
 
@@ -737,9 +745,9 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-## History
+### History
 
-### Trips
+#### Trips
 
 `GET` */trips*
 
@@ -761,7 +769,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Upcoming trips
+#### Upcoming trips
 
 `GET` */upcoming/trips*
 
@@ -783,7 +791,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Trip details
+#### Trip details
 
 `GET` */trips/details*
 
@@ -807,7 +815,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Upcoming trip details
+#### Upcoming trip details
 
 `GET` */upcoming/trips/details*
 
@@ -831,9 +839,9 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-## Payment
-
 ### Payment
+
+#### Payment
 
 `POST` */payment*
 
@@ -857,7 +865,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Add money
+#### Add money
 
 `POST` */add/money*
 
@@ -882,7 +890,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Estimated fee
+#### Estimated fee
 
 `GET` */estimated/fee*
 
@@ -938,7 +946,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Help
+#### Help
 
 `GET` */help*
 
@@ -963,9 +971,9 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-## Promo code
+### Promo code
 
-### Promo codes
+#### Promo codes
 
 `GET` */promocodes*
 
@@ -987,7 +995,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Add promo code
+#### Add promo code
 
 `POST` */promocode/add*
 
@@ -1011,9 +1019,9 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-## Card
+### Card
 
-### Index Card
+#### Index Card
 
 `GET` */card/index*
 
@@ -1035,7 +1043,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Store Card
+#### Store Card
 
 `POST` */card/store*
 
@@ -1059,7 +1067,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Destroy Card
+#### Destroy Card
 
 `POST` */card/destroy*
 
@@ -1083,11 +1091,9 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-## Location
+### Location
 
-### Insert Location
-
-### Index Card
+#### Index location
 
 `GET` */location/index*
 
@@ -1114,7 +1120,7 @@ Returns with status code `500`
 
 ---
 
-### Store Card
+#### Store location
 
 `POST` */location/store*
 
@@ -1141,7 +1147,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Show Card
+#### Show location
 
 `POST` */location/show/{id}*
 
@@ -1163,7 +1169,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Update Card
+#### Update location
 
 `POST` */location/update/{id}*
 
@@ -1192,9 +1198,9 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Destroy Card
+#### Destroy location
 
-`POST` */card/destroy*
+`POST` */location/destroy*
 
 replace `{id}` in the route with the preferred id
 
@@ -1214,9 +1220,9 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-## Passbook
+### Passbook
 
-### Wallet passbook
+#### Wallet passbook
 
 `GET` */wallet/passbook*
 
@@ -1238,7 +1244,7 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-### Promo passbook
+#### Promo passbook
 
 `GET` */promo/passbook*
 
@@ -1260,9 +1266,9 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-## Others
+### Others
 
-### Chat push
+#### Chat push
 
 `POST` */chat/push*
 
@@ -1276,11 +1282,12 @@ push notification or chat
 | message | String | message for the chat to push |
 
 **Response**
+
 `Nothing`
 
 ---
 
-### Package
+#### Package
 
 `GET` */package*
 
@@ -1300,7 +1307,7 @@ Returns type `PackageType`
 ---
 ---
 
-## Types
+# Types
 
 ### User
 
