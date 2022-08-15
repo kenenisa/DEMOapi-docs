@@ -2,7 +2,7 @@
 
 This doc is classified into 2 parts, **route methods** and **data types**. The route methods define an **HTTP** request with **request** and **response** part  and the types define how a certain data is structured.
 
-Certain routes are **unprotected** or require no **access token** to be accessed but others require an access token that can be acquired from **login**. These route are marked with a star symbol(**\***) whenever you see that symbol next to a route name that means you have to provide a token in the request url as a **parameter**. eg. https://somedomain.com/api/route?api_token=[your token] 
+Certain routes are **unprotected** or require no **access token** to be accessed but others require an access token that can be acquired from **login**. These route are marked with a star symbol(**\***) whenever you see that symbol next to a route name that means you have to provide a token in the request url as a **parameter**. eg. https://somedomain.com/api/route?api_token=[your_token] 
 
 Routes are classified into 3 parts each require their own prefix to be accessed.
 
@@ -14,8 +14,8 @@ Some routes have bugs in them. They do not work at all or they do not work as in
 
 <h1 style="font-size:30px;">✨ Contents</h1>
 
-- [Routes](#routes)
-  - [User routes](#user-routes)
+I. [Routes](#routes)
+ 2. [User routes](#user-routes)
     - [Access](#access)
       - [Settings](#settings)
       - [Verify](#verify)
@@ -75,7 +75,7 @@ Some routes have bugs in them. They do not work at all or they do not work as in
     - [Others](#others)
       - [Chat push*](#chat-push)
       - [Package*](#package)
-  - [Fleet routes](#fleet-routes)
+2. [Fleet routes](#fleet-routes)
     - [Access](#access-1)
       - [Forgot password](#forgot-password-1)
       - [Login](#login-1)
@@ -97,7 +97,7 @@ Some routes have bugs in them. They do not work at all or they do not work as in
       - [Refresh token](#refresh-token)
       - [Reset password*](#reset-password-1)
       - [Provider review](#provider-review)
-  - [Provider routes](#provider-routes)
+ 3. [Provider routes](#provider-routes)
     - [Auth](#auth-1)
       - [Facebook](#facebook-1)
       - [Google](#google-1)
@@ -148,7 +148,7 @@ Some routes have bugs in them. They do not work at all or they do not work as in
       - [Profile password](#profile-password-1)
       - [Refresh token](#refresh-token-1)
       - [Target*](#target)
-- [Types](#types)
+II. [Types](#types)
     - [User](#user)
     - [UserRequests](#userrequests)
     - [ServiceType](#servicetype)
