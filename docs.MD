@@ -1,4 +1,4 @@
-<span style="font-size:90px;text-align:center;"> API Docs </span>
+<h1 style="font-size:90px;text-align:center;">📃 API Docs </h1>
 
 This doc is classified into 2 parts, **route methods** and **data types**. The route methods define an **HTTP** request with **request** and **response** part  and the types define how a certain data is structured.
 
@@ -12,7 +12,7 @@ Routes are classified into 3 parts each require their own prefix to be accessed.
 
 Some routes have bugs in them. They do not work at all or they do not work as intended. Info about these routes is written in thier own section.
 
-<span style="font-size:30px;">Contents</span>
+<h1 style="font-size:30px;">✨ Contents</h1>
 
 - [Routes](#routes)
   - [User routes](#user-routes)
