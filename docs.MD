@@ -1184,7 +1184,7 @@ Returns type [Error](#error) with status code `500`
 
 #### Index location*
 
-`GET` */location/index*
+`GET` */location*
 
 Returns a list of location for a user
 
@@ -1211,7 +1211,7 @@ Returns with status code `500`
 
 #### Store location*
 
-`POST` */location/store*
+`POST` */location*
 
 Stores a location
 
@@ -1260,7 +1260,17 @@ Returns type [Error](#error) with status code `500`
 
 #### Edit location*
 
-`POST` */location/{id}/edit*
+`GET` */location/{id}/edit*
+
+> **This route is buggy it does the same thing as `Show location`**
+
+---
+
+---
+
+#### Update location*
+
+`PUT|PATCH` */location/{id}*
 
 replace `{id}` in the route with the preferred id
 
