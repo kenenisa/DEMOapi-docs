@@ -1,8 +1,8 @@
-<h1 style="font-size:90px;text-align:center;">📃 API Docs </h1>
+<span style="font-size:90px;text-align:center;"> API Docs </span>
 
 This doc is classified into 2 parts, **route methods** and **data types**. The route methods define an **HTTP** request with **request** and **response** part  and the types define how a certain data is structured.
 
-Certain routes are **unprotected** or require no **access token** to be accessed but others require an access token that can be acquired from **login**. These route are marked with a star symbol(**\***) whenever you see that symbol next to a route name that means you have to provide a token in the request url as a **parameter**. eg. https://somedomain.com/api/route?api_token=[your_token] 
+Certain routes are **unprotected** or require no **access token** to be accessed but others require an access token that can be acquired from **login**. These route are marked with a star symbol(**\***) whenever you see that symbol next to a route name that means you have to provide a token in the request url as a **parameter**. eg. https://somedomain.com/api/route?api_token=[your token] 
 
 Routes are classified into 3 parts each require their own prefix to be accessed.
 
@@ -12,7 +12,7 @@ Routes are classified into 3 parts each require their own prefix to be accessed.
 
 Some routes have bugs in them. They do not work at all or they do not work as intended. Info about these routes is written in thier own section.
 
-<h2 style="font-size:30px;">✨ Contents</h2>
+<span style="font-size:30px;">Contents</span>
 
 - [Routes](#routes)
   - [User routes](#user-routes)
@@ -67,7 +67,7 @@ Some routes have bugs in them. They do not work at all or they do not work as in
       - [Index location*](#index-location)
       - [Store location*](#store-location)
       - [Show location*](#show-location)
-      - [Update location*](#update-location-1)
+      - [Edit location*](#edit-location)
       - [Destroy location*](#destroy-location)
     - [Passbook](#passbook)
       - [Wallet passbook*](#wallet-passbook)
@@ -1111,7 +1111,7 @@ Returns type [Error](#error) with status code `500`
 
 #### Index Card*
 
-`GET` */card/index*
+`GET` */card*
 
 Returns a list of cards for a user
 
@@ -1133,7 +1133,7 @@ Returns type [Error](#error) with status code `500`
 
 #### Store Card*
 
-`POST` */card/store*
+`POST` */card*
 
 Stores a card
 
@@ -1157,8 +1157,9 @@ Returns type [Error](#error) with status code `500`
 
 #### Destroy Card*
 
-`POST` */card/destroy*
+`DELETE` */card/{card}*
 
+{card} is id if the card to be deleted
 Deletes a card
 
 **Request**
@@ -1237,7 +1238,7 @@ Returns type [Error](#error) with status code `500`
 
 #### Show location*
 
-`POST` */location/show/{id}*
+`GET` */location/{id}*
 
 show specific location with id
 
@@ -1257,9 +1258,9 @@ Returns type [Error](#error) with status code `500`
 
 ---
 
-#### Update location*
+#### Edit location*
 
-`POST` */location/update/{id}*
+`POST` */location/{id}/edit*
 
 replace `{id}` in the route with the preferred id
 
@@ -1288,7 +1289,7 @@ Returns type [Error](#error) with status code `500`
 
 #### Destroy location*
 
-`POST` */location/destroy*
+`DELETE` */location/{id}*
 
 replace `{id}` in the route with the preferred id
 
