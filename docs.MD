@@ -68,6 +68,7 @@ Some routes have bugs in them. They do not work at all or they do not work as in
          - [Store location*](#store-location)
          - [Show location*](#show-location)
          - [Edit location*](#edit-location)
+         - [Update location*](#update-location)
          - [Destroy location*](#destroy-location)
        - [Passbook](#passbook)
          - [Wallet passbook*](#wallet-passbook)
@@ -1263,8 +1264,6 @@ Returns type [Error](#error) with status code `500`
 `GET` */location/{id}/edit*
 
 > **This route is buggy it does the same thing as `Show location`**
-
----
 
 ---
 
