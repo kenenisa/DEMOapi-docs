@@ -15,7 +15,7 @@ Some routes have bugs in them. They do not work at all or they do not work as in
 <h1 style="font-size:30px;">✨ Contents</h1>
 
 I. [Routes](#routes)
- 2. [User routes](#user-routes)
+ 1. [User routes](#user-routes)
     - [Access](#access)
       - [Settings](#settings)
       - [Verify](#verify)
@@ -148,6 +148,7 @@ I. [Routes](#routes)
       - [Profile password](#profile-password-1)
       - [Refresh token](#refresh-token-1)
       - [Target*](#target)
+
 II. [Types](#types)
     - [User](#user)
     - [UserRequests](#userrequests)
